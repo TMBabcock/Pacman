@@ -3,8 +3,14 @@
 // Project: assign10
 
 /*
- TODO = Pacman Kills Ghosts
+ DONE = Pacman Kills Ghosts
  TODO = Every 30 sec Ghosts Duplicate
+	* I need a timer.
+	* I need ghosts to be dynamic(Easy Spawn, Move, & Delete). So they should be their own class.
+		* Ghosts need to be spawned at the start of the game.
+		* Their movement needs to be handled individually. Movement Function.
+		* I need to easily keep track of all the ghosts and the types. A list in the assign10.cpp
+		* I need to easily spawn & delete whenever. Spawn & Delete Function.
  TODO = New Lose Con. is if there are 128 ghosts.
 */
 
@@ -21,6 +27,10 @@ using namespace std;
 
 static bool replay = false; //check if starts a new game
 static bool over = true; //check for the game to be over
+static bool monster1Sick = true; //Is the 1st ghost alive?
+static bool monster2Sick = true; //Is the 2nd ghost alive?
+static bool monster3Sick = true; //Is the 3rd ghost alive?
+static bool monster4Sick = true; //Is the 4th ghost alive?
 static float squareSize = 50.0; //size of one square on the game
 static float xIncrement = 0; // x movement on pacman
 static float yIncrement = 0; // y movement on pacman
@@ -304,6 +314,8 @@ void keyOperations(){
 
 //Method to check if the game is over
 void gameOver(){
+
+	//Gets coordinates of pacman & all ghosts.
 	int pacmanX = (int)(1.5 + xIncrement);
 	int pacmanY = (int)(1.5 + yIncrement);
 	int monster1X = (int)(monster1[0]);
@@ -314,18 +326,22 @@ void gameOver(){
 	int monster3Y = (int)(monster3[1]);
 	int monster4X = (int)(monster4[0]);
 	int monster4Y = (int)(monster4[1]);
-	if (pacmanX == monster1X && pacmanY == monster1Y){
-		over = true;
+
+	//Checks if the coordinates of pacman match with the coordinates of a ghost...
+	//Monsters get "Vaccinated" if coordinates match.
+	if (pacmanX == monster1X && pacmanY == monster1Y) {
+		monster1Sick = false;
 	}
-	if (pacmanX == monster2X && pacmanY == monster2Y){
-		over = true;
+	if (pacmanX == monster2X && pacmanY == monster2Y) {
+		monster2Sick = false;
 	}
-	if (pacmanX == monster3X && pacmanY == monster3Y){
-		over = true;
+	if (pacmanX == monster3X && pacmanY == monster3Y) {
+		monster3Sick = false;
 	}
-	if (pacmanX == monster4X && pacmanY == monster4Y){
-		over = true;
+	if (pacmanX == monster4X && pacmanY == monster4Y) {
+		monster4Sick = false;
 	}
+
 	if (points == 106){
 		over = true;
 	}
@@ -426,14 +442,26 @@ void display(){
 			drawLaberynth();
 			drawFood((1.5f + xIncrement) * squareSize, (1.5f + yIncrement) * squareSize);
 			drawPacman(1.5f + xIncrement, 1.5f + yIncrement, float(rotation));
+
+			//Draws all the ghost sprites as display() gets called.
+			if (monster1Sick) {
+				drawMonster(monster1[0], monster1[1], 0.0f, 1.0f, 1.0f); //Inky
+			}
+			if (monster2Sick) {
+				drawMonster(monster2[0], monster2[1], 1.0f, 0.0f, 0.0f); //Blinky
+			}
+			if (monster3Sick) {
+				drawMonster(monster3[0], monster3[1], 1.0f, 0.0f, 0.6f); //Pinky
+			}
+			if (monster4Sick){
+				drawMonster(monster4[0], monster4[1], 1.0f, 0.3f, 0.0f); //Clyde
+			}
+
+			//Moving the ghosts in a random direction as display() gets called.
 			updateMonster(monster1, 1);
 			updateMonster(monster2, 2);
 			updateMonster(monster3, 3);
 			updateMonster(monster4, 4);
-			drawMonster(monster1[0], monster1[1], 0.0f, 1.0f, 1.0f); //cyan
-			drawMonster(monster2[0], monster2[1], 1.0f, 0.0f, 0.0f); //red
-			drawMonster(monster3[0], monster3[1], 1.0f, 0.0f, 0.6f); //magenta
-			drawMonster(monster4[0], monster4[1], 1.0f, 0.3f, 0.0f); //orange
 		}
 		else {
 			resultsDisplay();
@@ -445,7 +473,7 @@ void display(){
 	glutSwapBuffers();
 }
 
-//Methdo to reshape the game is the screen size changes
+//Method to reshape the game is the screen size changes
 void reshape(int w, int h){
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();

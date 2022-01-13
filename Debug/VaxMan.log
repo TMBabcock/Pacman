@@ -1,1 +1,47 @@
-﻿  VaxMan.vcxproj -> C:\Users\trevm\Desktop\C++\VaxMan\Debug\VaxManProject.exe
+﻿  assign10.cpp
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(80,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(85,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(88,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(91,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(110,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(111,55): warning C4244: 'argument': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(111,28): warning C4244: 'argument': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(124,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(136,63): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(137,64): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(139,18): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(139,15): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(140,65): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(141,64): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(142,18): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(142,15): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(155,48): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(156,47): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(158,18): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(158,15): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(159,47): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(160,46): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(161,18): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(161,15): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(168,23): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(191,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(193,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(202,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(204,32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(213,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(215,32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(224,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(226,32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(271,39): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(279,40): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(287,24): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+C:\Users\trevm\Desktop\C++\VaxMan\assign10.cpp(295,25): warning C4244: 'argument': conversion from 'float' to 'const unsigned int', possible loss of data
+  VaxMan.vcxproj -> C:\Users\trevm\Desktop\C++\VaxMan\Debug\VaxManProject.exe
