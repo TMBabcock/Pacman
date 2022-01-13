@@ -250,8 +250,8 @@ void resetGame(){
 //Method to update the movement of the pacman according to the movement keys pressed
 void keyOperations(){
 	//get current position
-	float  x = (1.5 + xIncrement) * squareSize;
-	float y = (1.5 + yIncrement) * squareSize;
+	float  x = (1.5f + xIncrement) * squareSize;
+	float y = (1.5f + yIncrement) * squareSize;
 	//update according to keys pressed
 	if (keyStates['a']){
 		x -= 2;
@@ -329,7 +329,7 @@ void gameOver(){
 void resultsDisplay(){
 	if (points == 106){
 		//Won
-		char* message = "*************************************";
+		const char* message = "*************************************";
 		glRasterPos2f(170, 250);
 		while (*message)
 			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *message++);
@@ -348,7 +348,7 @@ void resultsDisplay(){
 			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *message++);
 	}else {
 		//Lost
-		char* message = "*************************";
+		const char* message = "*************************";
 		glRasterPos2f(210, 250);
 		while (*message)
 			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *message++);
@@ -383,8 +383,8 @@ void resultsDisplay(){
 
 //Method to display the starting instructions
 void welcomeScreen(){
-	glClearColor(0, 0.2, 0.4, 1.0);
-	char* message = "*************************************";
+	glClearColor(0, 0.2f, 0.4f, 1.0f);
+	const char* message = "*************************************";
 	glRasterPos2f(150, 200);
 	while (*message)
 		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *message++);
@@ -418,16 +418,16 @@ void display(){
 	if (replay){
 		if (!over){
 			drawLaberynth();
-			drawFood((1.5 + xIncrement) * squareSize, (1.5 + yIncrement) * squareSize);
-			drawPacman(1.5 + xIncrement, 1.5 + yIncrement, rotation);
+			drawFood((1.5f + xIncrement) * squareSize, (1.5f + yIncrement) * squareSize);
+			drawPacman(1.5f + xIncrement, 1.5f + yIncrement, float(rotation));
 			updateMonster(monster1, 1);
 			updateMonster(monster2, 2);
 			updateMonster(monster3, 3);
 			updateMonster(monster4, 4);
-			drawMonster(monster1[0], monster1[1], 0.0, 1.0, 1.0); //cyan
-			drawMonster(monster2[0], monster2[1], 1.0, 0.0, 0.0); //red
-			drawMonster(monster3[0], monster3[1], 1.0, 0.0, 0.6); //magenta
-			drawMonster(monster4[0], monster4[1], 1.0, 0.3, 0.0); //orange
+			drawMonster(monster1[0], monster1[1], 0.0f, 1.0f, 1.0f); //cyan
+			drawMonster(monster2[0], monster2[1], 1.0f, 0.0f, 0.0f); //red
+			drawMonster(monster3[0], monster3[1], 1.0f, 0.0f, 0.6f); //magenta
+			drawMonster(monster4[0], monster4[1], 1.0f, 0.3f, 0.0f); //orange
 		}
 		else {
 			resultsDisplay();
