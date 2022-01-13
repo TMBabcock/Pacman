@@ -7,7 +7,6 @@
  TODO = Every 30 sec Ghosts Duplicate
 	* I need a timer.
 	* I need ghosts to be dynamic(Easy Spawn, Move, & Delete). So they should be their own class.
-		* Ghosts need to be spawned at the start of the game.
 		* Their movement needs to be handled individually. Movement Function.
 		* I need to easily keep track of all the ghosts and the types. A list in the assign10.cpp
 		* I need to easily spawn & delete whenever. Spawn & Delete Function.
