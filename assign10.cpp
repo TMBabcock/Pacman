@@ -2,6 +2,12 @@
 // Course: CSE 2050
 // Project: assign10
 
+/*
+ TODO = Pacman Kills Ghosts
+ TODO = Every 30 sec Ghosts Duplicate
+ TODO = New Lose Con. is if there are 128 ghosts.
+*/
+
 #include <stdlib.h>
 #include <vector>
 #include <deque>
