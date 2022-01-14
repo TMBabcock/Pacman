@@ -22,11 +22,12 @@
 #include <string>
 #define _USE_MATH_DEFINES
 #include <math.h>
+#include "Ghost.h"
 using namespace std;
 
 static bool replay = false; //check if starts a new game
 static bool over = true; //check for the game to be over
-static bool monster1Sick = true; //Is the 1st ghost alive?
+static bool monster1Sick = false; //Is the 1st ghost alive?
 static bool monster2Sick = true; //Is the 2nd ghost alive?
 static bool monster3Sick = true; //Is the 3rd ghost alive?
 static bool monster4Sick = true; //Is the 4th ghost alive?
@@ -34,10 +35,11 @@ static float squareSize = 50.0; //size of one square on the game
 static float xIncrement = 0; // x movement on pacman
 static float yIncrement = 0; // y movement on pacman
 static int rotation = 0; // orientation of pacman
-float* monster1 = new float[3] {10.5, 8.5, 1.0}; //coordinates and direction of first monster
-float* monster2 = new float[3] {13.5, 1.5, 2.0}; //coordinates and direction of second monster
-float* monster3 = new float[3] {4.5, 6.5, 3.0}; //coordinates and direction of third monster
-float* monster4 = new float[3] {2.5, 13.5, 4.0}; //coordinates and direction of fourth monster
+float* monster1 = new float[2] {10.5, 8.5}; //coordinates and direction of first monster
+Ghost inky('I', 10.5f, 8.5f, 1, 0.0f, 1.0f, 1.0f);
+float* monster2 = new float[2] {13.5, 1.5}; //coordinates and direction of second monster
+float* monster3 = new float[2] {4.5, 6.5}; //coordinates and direction of third monster
+float* monster4 = new float[2] {2.5, 13.5}; //coordinates and direction of fourth monster
 static vector<int> border = { 0, 0, 15, 1, 15, 15, 14, 1, 0, 14, 15, 15, 1, 14, 0, 0 }; //coordinates of the border walls
 
 //coordinates of the obstacles (divided into 3 for clarity)
@@ -190,7 +192,9 @@ void updateMonster(float* monster, int id){
 		case 1:
 			if (!bitmap.at(x1Quadrant).at((int)monster[1])){ 
 				monster[0] -= 2 / squareSize;
-			}else {
+			}
+			else 
+			{
 				int current = monster[2];
 				do{
 					monster[2] =  (rand() % 4) + 1;
@@ -201,7 +205,8 @@ void updateMonster(float* monster, int id){
 			if (!bitmap.at(x2Quadrant).at((int)monster[1])){
 				monster[0] += 2 / squareSize;
 			}
-			else {
+			else 
+			{
 				int current = monster[2];
 				do{
 					monster[2] = (rand() % 4) + 1;
@@ -455,6 +460,10 @@ void display(){
 			if (monster4Sick){
 				drawMonster(monster4[0], monster4[1], 1.0f, 0.3f, 0.0f); //Clyde
 			}
+
+			//Testing new ghost creation.
+			inky.spawn();
+			inky.move(bitmap);
 
 			//Moving the ghosts in a random direction as display() gets called.
 			updateMonster(monster1, 1);

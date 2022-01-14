@@ -20,6 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="assign10.cpp" />
+    <ClCompile Include="Ghost.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Ghost.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
