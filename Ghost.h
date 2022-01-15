@@ -9,12 +9,15 @@
 #include <math.h>
 using namespace std;
 
+//Problem: position[0] & position[1] aren't updating in move(). = TODO
+//Hypothesis: I am making changes to a copy of the variable, not the actual variable (look into * pointer).
+
 class Ghost
 {
 	private:
 		char name;
 		bool isSick = true;
-		float position [2];
+		float *position[2];
 		float rgb [3];
 		const int squareSize = 50;
 		int direction;
@@ -30,43 +33,47 @@ class Ghost
 				glColor3f(rgb[0], rgb[1], rgb[2]);
 				//draw the head
 				for (int k = 0; k < 32; k++) {
-					x = (float)k / 2.0 * cos(360 * M_PI / 180.0) + (position[0] * squareSize);
-					y = (float)k / 2.0 * sin(360 * M_PI / 180.0) + (position[1] * squareSize);
+					x = (float)k / 2.0 * cos(360 * M_PI / 180.0) + (*position[0] * squareSize);
+					y = (float)k / 2.0 * sin(360 * M_PI / 180.0) + (*position[1] * squareSize);
 					for (int i = 180; i <= 360; i++) {
 						glVertex2f(x, y);
-						x = (float)k / 2.0 * cos(i * M_PI / 180.0) + (position[0] * squareSize);
-						y = (float)k / 2.0 * sin(i * M_PI / 180.0) + (position[1] * squareSize);
+						x = (float)k / 2.0 * cos(i * M_PI / 180.0) + (*position[0] * squareSize);
+						y = (float)k / 2.0 * sin(i * M_PI / 180.0) + (*position[1] * squareSize);
 						glVertex2f(x, y);
 					}
 				}
 				glEnd();
 				//draw body
-				glRectf((position[0] * squareSize) - 17, position[1] * squareSize, (position[0] * squareSize) + 15, (position[1] * squareSize) + 15);
+				glRectf((*position[0] * squareSize) - 17, *position[1] * squareSize, (*position[0] * squareSize) + 15, (*position[1] * squareSize) + 15);
 				glBegin(GL_POINTS);
 				glColor3f(0, 0.2, 0.4);
 				//draw eyes and legs
-				glVertex2f((position[0] * squareSize) - 11, (position[1] * squareSize) + 14); //legs
-				glVertex2f((position[0] * squareSize) - 1, (position[1] * squareSize) + 14); //legs
-				glVertex2f((position[0] * squareSize) + 8, (position[1] * squareSize) + 14); //legs
-				glVertex2f((position[0] * squareSize) + 4, (position[1] * squareSize) - 3); //eyes
-				glVertex2f((position[0] * squareSize) - 7, (position[1] * squareSize) - 3); //eyes 
+				glVertex2f((*position[0] * squareSize) - 11, (*position[1] * squareSize) + 14); //legs
+				glVertex2f((*position[0] * squareSize) - 1, (*position[1] * squareSize) + 14); //legs
+				glVertex2f((*position[0] * squareSize) + 8, (*position[1] * squareSize) + 14); //legs
+				glVertex2f((*position[0] * squareSize) + 4, (*position[1] * squareSize) - 3); //eyes
+				glVertex2f((*position[0] * squareSize) - 7, (*position[1] * squareSize) - 3); //eyes 
 				glEnd();
 			}
 		}
 		//Responsible for moving the ghost.
 		void move(vector<vector<bool>> bitmap)
 		{
+			//std::cout << "Position X: " << position[0] << "." << std::endl;
+			//std::cout << "Position Y: " << position[1] << "." << std::endl;
+
 			//find the current position of the monster
-			int x1Quadrant = (int)((position[0] - (2 / squareSize)) - (16.0 * cos(360 * M_PI / 180.0)) / squareSize);
-			int x2Quadrant = (int)((position[0] + (2 / squareSize)) + (16.0 * cos(360 * M_PI / 180.0)) / squareSize);
-			int y1Quadrant = (int)((position[1] - (2 / squareSize)) - (16.0 * cos(360 * M_PI / 180.0)) / squareSize);
-			int y2Quadrant = (int)((position[1] + (2 / squareSize)) + (16.0 * cos(360 * M_PI / 180.0)) / squareSize);
+			int x1Quadrant = (int)((*position[0] - (2 / squareSize)) - (16.0 * cos(360 * M_PI / 180.0)) / squareSize);
+			int x2Quadrant = (int)((*position[0] + (2 / squareSize)) + (16.0 * cos(360 * M_PI / 180.0)) / squareSize);
+			int y1Quadrant = (int)((*position[1] - (2 / squareSize)) - (16.0 * cos(360 * M_PI / 180.0)) / squareSize);
+			int y2Quadrant = (int)((*position[1] + (2 / squareSize)) + (16.0 * cos(360 * M_PI / 180.0)) / squareSize);
 			//move him acording to its direction until he hits an obstacle
 			switch (direction) 
 			{
 			case 1:
-				if (!bitmap.at(x1Quadrant).at(position[1])) {
-					position[0] -= 2 / squareSize;
+				if (!bitmap.at(x1Quadrant).at(*position[1])) {
+					*position[0] -= 2 / squareSize;
+					std::cout << "Position X: " << position[0] << "." << std::endl;
 				}
 				else {
 					int current = direction;

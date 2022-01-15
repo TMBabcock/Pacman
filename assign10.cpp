@@ -181,63 +181,71 @@ void drawMonster(float positionX, float positionY, float r, float g, float b){
 }
 
 //Method to update the position of the monsters randomly
-void updateMonster(float* monster, int id){
-		//find the current position of the monster
-		int x1Quadrant = (int)((monster[0] - (2/squareSize)) - (16.0 *cos(360 * M_PI / 180.0)) / squareSize);
-		int x2Quadrant = (int)((monster[0] + (2/squareSize)) + (16.0 *cos(360 * M_PI / 180.0)) / squareSize);
-		int y1Quadrant = (int)((monster[1] - (2/squareSize)) - (16.0 *cos(360 * M_PI / 180.0)) / squareSize);
-		int y2Quadrant = (int)((monster[1] + (2/squareSize)) + (16.0 *cos(360 * M_PI / 180.0)) / squareSize);
-		//move him acording to its direction until he hits an obstacle
-		switch ((int)monster[2]){
-		case 1:
-			if (!bitmap.at(x1Quadrant).at((int)monster[1])){ 
-				monster[0] -= 2 / squareSize;
-			}
-			else 
-			{
-				int current = monster[2];
-				do{
-					monster[2] =  (rand() % 4) + 1;
-				} while (current == (int) monster[2]);
-			}
-			break;
-		case 2:
-			if (!bitmap.at(x2Quadrant).at((int)monster[1])){
-				monster[0] += 2 / squareSize;
-			}
-			else 
-			{
-				int current = monster[2];
-				do{
-					monster[2] = (rand() % 4) + 1;
-				} while (current == (int)monster[2]);
-			}
-			break;
-		case 3:
-			if (!bitmap.at((int)monster[0]).at(y1Quadrant)){
-				monster[1] -= 2 / squareSize;
-			}
-			else {
-				int current = monster[2];
-				do{
-					monster[2] = (rand() % 4) + 1;
-				} while (current == (int)monster[2]);
-			}
-			break;
-		case 4:
-			if (!bitmap.at((int)monster[0]).at(y2Quadrant)){
-				monster[1] += 2 / squareSize;
-			}
-			else {
-				int current = monster[2];
-				do{
-					monster[2] = (rand() % 4) + 1;
-				} while (current == (int)monster[2]);
-			}
-			break;
-		default:
-			break;
+void updateMonster(float* monster, int id)
+{
+	
+	if (monster == monster1)
+	{
+		//std::cout << "Position X: " << monster[0] << "." << std::endl;
+	}
+	
+
+	//find the current position of the monster
+	int x1Quadrant = (int)((monster[0] - (2/squareSize)) - (16.0 *cos(360 * M_PI / 180.0)) / squareSize);
+	int x2Quadrant = (int)((monster[0] + (2/squareSize)) + (16.0 *cos(360 * M_PI / 180.0)) / squareSize);
+	int y1Quadrant = (int)((monster[1] - (2/squareSize)) - (16.0 *cos(360 * M_PI / 180.0)) / squareSize);
+	int y2Quadrant = (int)((monster[1] + (2/squareSize)) + (16.0 *cos(360 * M_PI / 180.0)) / squareSize);
+	//move him acording to its direction until he hits an obstacle
+	switch ((int)monster[2]){
+	case 1:
+		if (!bitmap.at(x1Quadrant).at((int)monster[1])){ 
+			monster[0] -= 2 / squareSize;
 		}
+		else 
+		{
+			int current = monster[2];
+			do{
+				monster[2] =  (rand() % 4) + 1;
+			} while (current == (int) monster[2]);
+		}
+		break;
+	case 2:
+		if (!bitmap.at(x2Quadrant).at((int)monster[1])){
+			monster[0] += 2 / squareSize;
+		}
+		else 
+		{
+			int current = monster[2];
+			do{
+				monster[2] = (rand() % 4) + 1;
+			} while (current == (int)monster[2]);
+		}
+		break;
+	case 3:
+		if (!bitmap.at((int)monster[0]).at(y1Quadrant)){
+			monster[1] -= 2 / squareSize;
+		}
+		else {
+			int current = monster[2];
+			do{
+				monster[2] = (rand() % 4) + 1;
+			} while (current == (int)monster[2]);
+		}
+		break;
+	case 4:
+		if (!bitmap.at((int)monster[0]).at(y2Quadrant)){
+			monster[1] += 2 / squareSize;
+		}
+		else {
+			int current = monster[2];
+			do{
+				monster[2] = (rand() % 4) + 1;
+			} while (current == (int)monster[2]);
+		}
+		break;
+	default:
+		break;
+	}
 }
 
 //Method to set the pressed key
